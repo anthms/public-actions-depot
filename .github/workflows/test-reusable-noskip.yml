@@ -1,0 +1,9 @@
+name: Test Reusable WF - No Skip
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Testing
+    uses: anthms/emerald-forest/.github/workflows/main.yml@main
