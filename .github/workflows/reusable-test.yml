@@ -1,0 +1,11 @@
+name: Test Reusable WF
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Testing
+    uses: anthms/emerald-forest/.github/workflows/main.yml@main
+    with:
+      assets: false
