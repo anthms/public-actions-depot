@@ -6,6 +6,4 @@ on:
 jobs:
   test:
     name: Testing
-    uses: anthms/emerald-forest/.github/workflows/main.yml@main
-    with:
-      assets: false
+    uses: anthms/public-actions-depot/.github/workflows/main.yml@main
