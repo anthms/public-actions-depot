@@ -2,8 +2,9 @@ name: Test Reusable WF
 
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   test:
     name: Testing
-    uses: anthms/public-actions-depot/.github/workflows/main.yml@main
+    uses: anthms/public-actions-depot/.github/workflows/success-skip-failCOE.yml@main
