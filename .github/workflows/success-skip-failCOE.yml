@@ -1,4 +1,4 @@
-on: [workflow_call]
+on: [push]
 
 jobs:
   job-success:
@@ -12,9 +12,9 @@ jobs:
       - run: echo "success!"
   job-fail-coe:
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/github-script@v6
+        continue-on-error: true
         with:
           script: |
             core.setFailed('failure');
