@@ -1,0 +1,20 @@
+on: [push]
+
+jobs:
+  job-success:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "success!"
+  job-skip:
+    runs-on: ubuntu-latest
+    if: false
+    steps:
+      - run: echo "success!"
+  job-fail-coe:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            core.setFailed('failure');
