@@ -1,0 +1,11 @@
+name: 22.04 libsystemd-dev Error
+
+on:
+  push:
+
+jobs:
+  work:
+    runs-on: ubuntu-22.04
+    steps:
+      - run: |
+          sudo apt install libsystemd-dev
