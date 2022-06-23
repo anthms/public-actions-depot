@@ -9,4 +9,4 @@ jobs:
     steps:
       - run: |
           sudo apt update
-          sudo apt -y install libsystemd-dev
+          sudo apt install systemd libsystemd-dev
