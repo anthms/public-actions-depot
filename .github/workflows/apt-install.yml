@@ -9,4 +9,4 @@ jobs:
     steps:
       - run: |
           sudo apt update
-          sudo apt install libsystemd0=249.11-0ubuntu3 libsystemd-dev
+          sudo apt install libsystemd0=249.11-0ubuntu3
