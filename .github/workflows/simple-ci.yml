@@ -8,9 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          for value in {1..50}
+          for value in {1..150}
           do
             echo "Print this --> $value"
+            sleep 2
           done
           
           echo All done
+      - uses: actions/checkout@v3
