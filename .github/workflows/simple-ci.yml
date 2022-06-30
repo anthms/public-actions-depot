@@ -2,11 +2,15 @@ name: CI
 
 on:
   push:
-    tags:
-      - "*-production"
       
 jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ran!
+      - run: |
+          for value in {1..50}
+          do
+            echo "Print this --> $value"
+          done
+          
+          echo All done
