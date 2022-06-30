@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          for value in {1..150}
+          for value in {1..50}
           do
             echo "Print this --> $value"
-            sleep 2
+            sleep 1
           done
           
           echo All done
