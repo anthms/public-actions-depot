@@ -1,0 +1,12 @@
+name: CI
+
+on:
+  push:
+    tags:
+      - "*-production"
+      
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ran!
