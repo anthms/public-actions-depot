@@ -6,6 +6,7 @@ on:
 jobs:
   job1:
     if: false
+    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
       - run: |
