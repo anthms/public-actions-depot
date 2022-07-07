@@ -1,0 +1,12 @@
+name: WFTest
+
+on:
+  #push:
+  #pull_request:
+  workflow_dispatch:
+
+jobs:
+  job-name:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Here!
