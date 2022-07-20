@@ -18,4 +18,4 @@ jobs:
           mkdir mydir
           echo "Here is my file" > ./mydir/file.txt
         
-      - run: echo < ./mydir/file.txt
+      - run: cat ./mydir/file.txt
