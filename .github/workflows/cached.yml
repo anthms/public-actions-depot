@@ -1,0 +1,21 @@
+name: Test Cache
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: cache-this
+        uses: actions/cache@v3
+        with:
+        path: mydir
+        key: ${{ runner.os }}-mykey
+        
+      - if: steps.cache-this.outputs.cache-hit != 'true'
+        run: |
+        mkdir mydir
+        echo "Here is my file" > ./mydir/file.txt
+        
+      - run: echo ./mydir/file.txt
