@@ -11,7 +11,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: mydir
-          key: ${{ runner.os }}-mykey
+          key: ${{ runner.os }}-mykeytwo
         
       - if: steps.cache-this.outputs.cache-hit != 'true'
         run: |
