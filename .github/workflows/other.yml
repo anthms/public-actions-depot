@@ -1,4 +1,5 @@
 on:
+  workflow_dispatch:
   push:
     branches:
       - main 
@@ -7,7 +8,9 @@ jobs:
   job-fail:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@v6
+      - run: echo ${{ github.ref }}
+      - if: false
+        uses: actions/github-script@v6
         with:
           script: |
             core.setFailed('failure');
