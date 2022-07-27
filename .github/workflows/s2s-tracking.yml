@@ -23,4 +23,4 @@ jobs:
           mkdir prime-numbers
           echo "FILE CONTENT" > prime-numbers/file.txt
           
-      - uses: ./.github/workflows/success-skip-failCOE.yml
+      - uses: ./action.yml
