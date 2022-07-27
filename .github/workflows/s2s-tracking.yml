@@ -23,4 +23,4 @@ jobs:
           mkdir prime-numbers
           echo "FILE CONTENT" > prime-numbers/file.txt
           
-      - uses: action.yml
+      - uses: ./action.yml
