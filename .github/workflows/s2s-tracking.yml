@@ -16,9 +16,11 @@ jobs:
         uses: actions/cache@v3
         with:
           path: prime-numbers
-          key: primes
+          key: primesl
 
       - if: steps.cache-primes.outputs.cache-hit != 'true'
         run: |
           mkdir prime-numbers
           echo "FILE CONTENT" > prime-numbers/file.txt
+          
+      - uses: ./.github/workflows/success-skip-failCOE.yml
