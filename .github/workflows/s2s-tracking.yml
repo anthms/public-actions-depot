@@ -15,4 +15,6 @@ jobs:
           key: primes
 
       - if: steps.cache-primes.outputs.cache-hit != 'true'
-        run: ./generate-primes.sh -d prime-numbers
+        run: |
+          mkdir prime-numbers
+          echo "FILE CONTENT" > prime-numbers/file.txt
