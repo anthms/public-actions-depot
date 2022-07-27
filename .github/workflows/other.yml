@@ -1,15 +1,15 @@
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-      - branch/*
+  pull_request:
 
 jobs:
   job-fail:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ github.ref }}
+      - run: |
+          echo start
+          sleep 180
+          echo done
       - if: false
         uses: actions/github-script@v6
         with:
