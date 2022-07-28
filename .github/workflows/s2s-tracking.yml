@@ -16,4 +16,4 @@ jobs:
       - uses: ./.github/actions
       
   job2:
-    uses: ./.github/workflows/reusable-callable.yml
+    uses: anthms/public-actions-depot/.github/workflows/reusable-callable.yml@main
