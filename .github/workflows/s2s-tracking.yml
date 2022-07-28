@@ -8,21 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [10, 12, 14]
-        os: [0,1]
+        version: [1, 2, 3]
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-java@v3
-        with:
-          distribution: 'zulu'
-          java-version: '11'
-      - id: cache-primes
-        uses: actions/cache@v3
-        with:
-          path: prime-numbers
-          key: primes-${{ matrix.version }}
-
-      - if: steps.cache-primes.outputs.cache-hit != 'true'
-        run: |
-          mkdir prime-numbers
-          echo "FILE CONTENT" > prime-numbers/file.txt
+      - uses: ./.github/workflows/reusable-callable.yml
