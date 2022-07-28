@@ -19,4 +19,4 @@ jobs:
   job2:
     uses: anthms/public-actions-depot/.github/workflows/reusable-callable.yml@main
   job3:
-    uses: anthms/event-test/main/.github/workflows/blank.yml@main
+    uses: anthms/event-test/.github/workflows/blank.yml@main
