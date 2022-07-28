@@ -14,6 +14,7 @@ jobs:
         with:
            fetch-depth: 0
       - uses: ./.github/actions
+      - uses: anthms/event-test/main/.github/workflows/blank.yml@main
       
   job2:
     uses: anthms/public-actions-depot/.github/workflows/reusable-callable.yml@main
