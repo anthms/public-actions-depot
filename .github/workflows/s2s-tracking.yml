@@ -14,5 +14,5 @@ jobs:
       - uses: ./.github/actions
 
   job-two:
-    uses: anthms/event-test/main/.github/workflows/blank.yml@main
+    uses: anthms/event-test/.github/workflows/blank.yml@main
     
