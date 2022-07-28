@@ -8,11 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [1, 2, 3]
+        version: [1, 2, 3, 4, 5]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions
       - uses: anthms/event-test@main
-      
-  job2:
-    uses: anthms/public-actions-depot/.github/workflows/reusable-callable.yml@main
