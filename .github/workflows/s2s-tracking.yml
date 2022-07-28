@@ -12,4 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions
-      - uses: anthms/event-test@main
+
+  job-two:
+    uses: anthms/event-test/main/.github/workflows/blank.yml@main
+    
