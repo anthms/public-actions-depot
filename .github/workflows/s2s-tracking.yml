@@ -11,10 +11,8 @@ jobs:
         version: [1, 2, 3]
     steps:
       - uses: actions/checkout@v3
-        with:
-           fetch-depth: 0
       - uses: ./.github/actions
-      - uses: anthms/event-test@main
+      #- uses: anthms/event-test@main
       
   job2:
     uses: anthms/public-actions-depot/.github/workflows/reusable-callable.yml@main
