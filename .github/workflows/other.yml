@@ -1,15 +1,11 @@
 on:
-  workflow_dispatch:
-  pull_request:
+  push:
 
 jobs:
   job-fail:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo start
-          sleep 180
-          echo done
+      - uses: actions/checkout@d0651293c4a5a52e711f25b41b05b2212f385d28
       - if: false
         uses: actions/github-script@v6
         with:
