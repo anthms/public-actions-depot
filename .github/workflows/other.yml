@@ -11,7 +11,7 @@ jobs:
           -H "Accept: application/vnd.github+json" \
           -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
           https://api.github.com/repos/${{ github.repository }}/releases \
-          -d '{"tag_name":"c1","target_commitish":"main","name":"v65","body":"Description of the release","draft":false,"prerelease":false,"generate_release_notes":false}'
+          -d '{"tag_name":"f1","target_commitish":"main","name":"0000","body":"Description of the release","draft":false,"prerelease":false,"generate_release_notes":false}'
 
   pull-latest:
     needs: create-release
