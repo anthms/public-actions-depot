@@ -4,18 +4,30 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  check-cache:
     runs-on: ubuntu-latest
     steps:
       - id: cache-this
         uses: actions/cache@v3
         with:
           path: mydir
-          key: ${{ runner.os }}-mykeytwo
+          key: ${{ runner.os }}-mykeynew
         
       - if: steps.cache-this.outputs.cache-hit != 'true'
         run: |
           mkdir mydir
           echo "Here is my file" > ./mydir/file.txt
-        
-      - run: cat ./mydir/file.txt
+      
+  use-cache:
+    needs: check-cache
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/cache@v3
+        with:
+          path: mydir
+          key: ${{ runner.os }}-mykeynew
+      - run: |
+          ls .
+          cat mydir/file.txt
+          
+    
