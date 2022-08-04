@@ -5,6 +5,8 @@ on: [push]
 jobs:
   verify-attempt:
     runs-on: ubuntu-latest
+    env:
+      FLAG: false
     steps:
       - id: check
         run: |
@@ -14,20 +16,18 @@ jobs:
           https://api.github.com/repos/${{ github.repository }}/actions/runs |
           jq .workflow_runs[0].id)
 
-          FLAG=$(curl \
+          RESP=$(curl \
           -H "Accept: application/vnd.github+json" \
           -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
           https://api.github.com/repos/${{ github.repository }}/actions/runs/$ID/attempts/2 |
           jq .message)
 
-          if [ $FLAG == "Not Found" ]
+          if [ $RESP != "Not Found" ]
           then
-            false
-          else
-            true
+            echo "FLAG=$true" >> $GITHUB_ENV
           fi
           
-      - if: ${{ steps.check.outputs }}
+      - if: ${{ env.FLAG }}
         uses: actions/github-script@v6
         with:
           script: |
