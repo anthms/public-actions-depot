@@ -22,9 +22,9 @@ jobs:
 
           if [ -z "$FLAG" ]
           then
-            return 0
+            false
           else
-            return 1
+            true
           fi
           
       - if: ${{ steps.check.outputs }}
