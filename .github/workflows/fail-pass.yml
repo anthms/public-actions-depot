@@ -18,9 +18,9 @@ jobs:
           -H "Accept: application/vnd.github+json" \
           -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
           https://api.github.com/repos/${{ github.repository }}/actions/runs/$ID/attempts/2 |
-          jq .workflow_runs)
+          jq .message)
 
-          if [ -z "$FLAG" ]
+          if [ $FLAG == "Not Found" ]
           then
             false
           else
