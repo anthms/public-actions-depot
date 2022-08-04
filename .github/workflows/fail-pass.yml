@@ -13,7 +13,10 @@ jobs:
           https://api.github.com/repos/${{ github.repository }}/actions/runs |
           jq .workflow_runs[0].id)
 
-          curl \
+          FLAG=$(curl \
           -H "Accept: application/vnd.github+json" \
           -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          https://api.github.com/repos/${{ github.repository }}/actions/runs/$ID/attempts/2
+          https://api.github.com/repos/${{ github.repository }}/actions/runs/$ID/attempts/2 |
+          jq .workflow_runs)
+
+          
