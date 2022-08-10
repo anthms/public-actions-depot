@@ -3,10 +3,12 @@ on:
 
 jobs:
   work:
-    runs-on: ubuntu-latest
+    runs-on: windows-2019
+    env:
+      VULKAN_SDK_VER: 1.2.176.1
     steps:
       - run: |
-          curl -o VulkanSDK-Installer.exe https://sdk.lunarg.com/sdk/download/%VULKAN_SDK_VER%/windows/VulkanSDK-%VULKAN_SDK_VER%-Installer.exe?Human=true
+          curl -o VulkanSDK-Installer.exe https://sdk.lunarg.com/sdk/download/${{ env.VULKAN_SDK_VER }}/windows/VulkanSDK-${{ env.VULKAN_SDK_VER }}-Installer.exe?Human=true
           .\VulkanSDK-Installer.exe /S
 
       - run: |
