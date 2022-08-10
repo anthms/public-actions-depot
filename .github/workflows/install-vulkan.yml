@@ -20,7 +20,7 @@ jobs:
 
       - run: |
           cd C:\VulkanSDK\${{ env.VULKAN_SDK_VER }}\Bin
-          .\vkvia.exe
+#          .\vkvia.exe
       
       - name: Setup tmate session if failure
         if: false #${{ failure() }}
