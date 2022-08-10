@@ -1,0 +1,14 @@
+on:
+  push:
+
+jobs:
+  work:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -o VulkanSDK-Installer.exe https://sdk.lunarg.com/sdk/download/%VULKAN_SDK_VER%/windows/VulkanSDK-%VULKAN_SDK_VER%-Installer.exe?Human=true
+          .\VulkanSDK-Installer.exe /S
+
+      - run: |
+          vulkaninfoSDK
+          vkvia
