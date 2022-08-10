@@ -7,13 +7,16 @@ jobs:
     env:
       VULKAN_SDK_VER: 1.2.176.1
     steps:
-      - uses: actions/cache@v3
+      - id: cache-check
+        uses: actions/cache@v3
         with:
           path: C:\VulkanSDK
           key: vulkan-key
-      - run: |
-          curl -o VulkanSDK-Installer.exe https://sdk.lunarg.com/sdk/download/${{ env.VULKAN_SDK_VER }}/windows/VulkanSDK-${{ env.VULKAN_SDK_VER }}-Installer.exe?Human=true
-          .\VulkanSDK-Installer.exe /S
+
+      - if: steps.cache-check.outputs.cache-hit != 'true'
+        run: curl -o VulkanSDK-Installer.exe https://sdk.lunarg.com/sdk/download/${{ env.VULKAN_SDK_VER }}/windows/VulkanSDK-${{ env.VULKAN_SDK_VER }}-Installer.exe?Human=true
+
+      - run: .\VulkanSDK-Installer.exe /S
 
       - run: |
           cd C:\VulkanSDK\${{ env.VULKAN_SDK_VER }}\Bin
