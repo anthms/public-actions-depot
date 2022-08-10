@@ -11,9 +11,9 @@ jobs:
           curl -o VulkanSDK-Installer.exe https://sdk.lunarg.com/sdk/download/${{ env.VULKAN_SDK_VER }}/windows/VulkanSDK-${{ env.VULKAN_SDK_VER }}-Installer.exe?Human=true
           .\VulkanSDK-Installer.exe /S
 
-      - run: C:\VulkanSDK\Bin\vkvia.exe
+      - run: C:\VulkanSDK\${{ env.VULKAN_SDK_VER }}\Bin\vkvia.exe
       
       - name: Setup tmate session if failure
-        if: ${{ failure() }}
+        if: false #${{ failure() }}
         uses: mxschmitt/action-tmate@v3
         timeout-minutes: 20
