@@ -11,6 +11,4 @@ jobs:
           curl -o VulkanSDK-Installer.exe https://sdk.lunarg.com/sdk/download/${{ env.VULKAN_SDK_VER }}/windows/VulkanSDK-${{ env.VULKAN_SDK_VER }}-Installer.exe?Human=true
           .\VulkanSDK-Installer.exe /S
 
-      - run: |
-          vulkaninfoSDK
-          vkvia
+      - run: C:\VulkanSDK\Bin\vkvia.exe
