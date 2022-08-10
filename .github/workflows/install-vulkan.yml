@@ -12,3 +12,8 @@ jobs:
           .\VulkanSDK-Installer.exe /S
 
       - run: C:\VulkanSDK\Bin\vkvia.exe
+      
+      - name: Setup tmate session if failure
+        if: ${{ failure() }}
+        uses: mxschmitt/action-tmate@v3
+        timeout-minutes: 20
