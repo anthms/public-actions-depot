@@ -3,7 +3,7 @@ on:
 
 jobs:
   job1:
-    if: ${{ !cancelled() && ( true || true ) }}
+    if: !cancelled() && ( true || true )
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
