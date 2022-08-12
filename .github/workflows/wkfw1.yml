@@ -3,9 +3,9 @@ on:
 
 jobs:
   job1:
-    if: true && !cancelled()
+    if: always()
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 1
     steps:
       - run: |
           counter=1
