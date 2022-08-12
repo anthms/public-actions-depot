@@ -1,0 +1,17 @@
+on:
+  push:
+
+jobs:
+  job1:
+    if: ${{ !cancelled }} && ( true || true )
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          counter=1
+          until [ $counter -gt 50 ]
+          do
+            echo $counter
+            ((counter++))
+            sleep 20
+          done
+          echo All done
