@@ -7,9 +7,9 @@ jobs:
     services:
       dind:
         image: docker:20.10-dind
-        env:
-          DOCKER_DRIVER: overlay2
-          DOCKER_HOST: tcp://docker:2375/
+#        env:
+#          DOCKER_DRIVER: overlay2
+#          DOCKER_HOST: tcp://docker:2375/
     steps:
       - run: echo "Run"
   job1:
