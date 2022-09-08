@@ -10,6 +10,8 @@ jobs:
         env:
           DOCKER_DRIVER: overlay2
 #          DOCKER_HOST: tcp://docker:2375/
+        ports:
+          - docker:2375
     steps:
       - run: echo "Run"
   job1:
