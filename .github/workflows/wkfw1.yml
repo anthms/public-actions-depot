@@ -2,8 +2,18 @@ on:
   push:
 
 jobs:
+  job2:
+    runs-on: ubuntu-latest
+    services:
+      dind:
+        image: docker:20.10-dind
+        env:
+          DOCKER_DRIVER: overlay2
+          DOCKER_HOST: tcp://docker:2375/
+    steps:
+      - run: echo "Run"
   job1:
-    if: always()
+    if: false
     runs-on: ubuntu-latest
     timeout-minutes: 1
     steps:
