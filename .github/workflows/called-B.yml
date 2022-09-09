@@ -1,0 +1,15 @@
+name: reusable workflow B
+on:
+  workflow_call:
+    inputs:
+      value:
+        type: string
+        required: true
+
+jobs:
+  debug-output-B:
+    name: debug output
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo '${{ inputs.value }}'
