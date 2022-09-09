@@ -1,0 +1,29 @@
+name: reusable workflow A
+on:
+  workflow_call:
+    inputs:
+      matrix-input:
+        type: string
+        required: true
+
+jobs:
+  debug-output-A:
+    name: debug output
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{ fromJson(inputs.matrix-input) }}
+    steps:
+      - run: |
+          echo '${{ matrix.key }}'
+
+  call-B-plain:
+    uses: ./.github/workflows/B.yml
+    with:
+      value: 'arbitrary string'
+
+  call-B-with-matrix:
+    uses: ./.github/workflows/B.yml
+    strategy:
+      matrix: ${{ fromJson(inputs.matrix-input) }}
+    with:
+      value: ${{ matrix.key }}
