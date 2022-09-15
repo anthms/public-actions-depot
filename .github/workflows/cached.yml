@@ -12,6 +12,8 @@ jobs:
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.head.ref }}
+      
+      - run: echo "${{ fromJSON(github.event) }}"
     
       - id: cache-this
         uses: actions/cache@v3
