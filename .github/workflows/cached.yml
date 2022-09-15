@@ -11,9 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.head.ref }}
+          ref: ${{ github.event.pull_request.head.ref }}
       
-      - run: echo "${{ fromJSON(github.event) }}"
+      - run: echo "${{ fromJSON(github.event.pull_request) }}"
     
       - id: cache-this
         uses: actions/cache@v3
