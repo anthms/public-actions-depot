@@ -1,7 +1,7 @@
 name: Test Cache
 
 on:
-  push:
+  #push:
   workflow_dispatch:
   pull_request_target:
 
