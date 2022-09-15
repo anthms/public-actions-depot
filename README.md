@@ -1,3 +1,3 @@
 # public-actions-depot
 
-:candy: :candy: C
+:candy: :candy: C E
