@@ -6,7 +6,7 @@ on:
 jobs:
   job-name:
     runs-on: ubuntu-latest
-    container: alpine:latest
+    container: bash:latest
     steps:
       - name: Init
         shell: bash
