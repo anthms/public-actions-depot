@@ -1,0 +1,22 @@
+on:
+  #push:
+  #pull_request:
+  workflow_dispatch:
+
+jobs:
+  job-name:
+    runs-on: ubuntu-latest
+    container: alpine:latest
+    steps:
+      - name: Init
+        shell: bash
+        run: /sbin/my_init &
+      - run: |
+          counter=1
+          until [ $counter -gt 50 ]
+          do
+            echo $counter
+            ((counter++))
+            sleep 1
+          done
+          echo All done
