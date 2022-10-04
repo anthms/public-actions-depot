@@ -6,10 +6,9 @@ on:
 jobs:
   job-name:
     runs-on: ubuntu-latest
-    container: bash:latest
+    container: alpine:latest
     steps:
       - name: Init
-        shell: bash
         run: /sbin/my_init &
       - run: |
           counter=1
