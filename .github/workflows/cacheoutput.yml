@@ -5,21 +5,16 @@ on:
 
 jobs:
   job-name:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os:
-        - ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
     
       - id: cache-this
         uses: actions/cache@v3
         with:
           path: mydir
-          key: ${{ matrix.os }}-mykeynew-eccetera
+          key: my-key-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
-            ${{ matrix.os }}-mykeynew
+            my-key
         
       - if: steps.cache-this.outputs.cache-hit != 'true'
         run: |
