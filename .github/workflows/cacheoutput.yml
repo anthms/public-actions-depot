@@ -17,7 +17,9 @@ jobs:
         uses: actions/cache@v3
         with:
           path: mydir
-          key: ${{ runner.os }}-mykeynew
+          key: ${{ matrix.os }}-mykeynew-eccetera
+          restore-keys: |
+            ${{ matrix.os }}-mykeynew
         
       - if: steps.cache-this.outputs.cache-hit != 'true'
         run: |
