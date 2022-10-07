@@ -26,5 +26,3 @@ jobs:
           echo ${{ steps.cache-this.outputs.cache-hit }}
           mkdir mydir
           echo "Here is my file" > ./mydir/file.txt
-          exit 1
-    
