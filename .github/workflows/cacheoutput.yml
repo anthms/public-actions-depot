@@ -20,5 +20,4 @@ jobs:
       - if: steps.cache-this.outputs.cache-hit != 'true'
         run: |
           echo ${{ steps.cache-this.outputs.cache-hit }}
-          mkdir mydir
           echo "Here is my file" > ./mydir/file.txt
