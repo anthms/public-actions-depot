@@ -16,6 +16,8 @@ jobs:
           key: my-key-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             my-key
+            
+      - run: echo ${{ hashFiles('**/pom.xml') }}
         
       - if: steps.cache-this.outputs.cache-hit != 'true'
         run: |
