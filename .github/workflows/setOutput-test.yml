@@ -10,10 +10,10 @@ jobs:
       - id: step
         run: |
           echo "::set-output name=value::400"
+      - run: ${{ steps.step.outputs.value }}
       
     
   wf-files:
-    if: false
     runs-on: ubuntu-latest
     outputs:
       value: ${{ steps.step.outputs.value }}
@@ -21,4 +21,5 @@ jobs:
       - id: step
         run: |
           echo "value=400" >> $GITHUB_OUTPUT
+      - run: ${{ steps.step.outputs.value }}
     
