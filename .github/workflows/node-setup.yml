@@ -12,11 +12,23 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup GPG
-        uses: cresh-io/action-gpg@v1
-        with:
-          gpg-passphrase: passphrase
-          gpg-sign-key: key
-          git-email: email@a.c
-          git-username: my-username
+      - run: |
+          if [ -f /usr/lib/systemd/user/gpg-agent.service ]; then
+            mkdir ~/.gnupg
+            cat <<EOT >> ~/.gnupg/gpg-agent.conf
+            allow-preset-passphrase
+            default-cache-ttl 60
+            max-cache-ttl 50
+          EOT
+            chmod 600 ~/.gnupg/*
+            chmod 700 ~/.gnupg
+            systemctl --user restart gpg-agent
+          else
+            gpg-agent --daemon --allow-preset-passphrase \
+            --default-cache-ttl 60 --max-cache-ttl 60
+          fi
+          
+          gpg --pinentry-mode loopback \
+          --passphrase-file <(echo passphrase) \
+          --import
       
