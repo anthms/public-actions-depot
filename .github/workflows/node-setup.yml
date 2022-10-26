@@ -7,5 +7,16 @@ jobs:
   job-name:
     runs-on: ubuntu-latest
     steps:
-      - run: echo <(echo true)
+      - name: Check out the Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup GPG
+        uses: cresh-io/action-gpg@v1
+        with:
+          gpg-passphrase: passphrase
+          gpg-sign-key: key
+          git-email: email@a.c
+          git-username: my-username
       
