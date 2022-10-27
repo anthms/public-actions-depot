@@ -10,4 +10,5 @@ jobs:
             *:posix:*) echo "POSIX mode enabled" ;;
             *)         echo "POSIX mode not enabled" ;;
           esac
+      - run: echo <(echo ***)
       
