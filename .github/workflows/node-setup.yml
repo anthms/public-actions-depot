@@ -7,5 +7,5 @@ jobs:
   job-name:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ github.event.schedule }}
+      - run: echo ${{ toJSON(github.event.schedule) }}
       
