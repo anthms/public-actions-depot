@@ -2,7 +2,7 @@ on:
   push:
     
 env:
-  DATE: date +'%Y-%m-%d'
+  DATE: $(date +'%Y-%m-%d')
 
 jobs:
   job-name:
