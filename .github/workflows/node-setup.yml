@@ -1,14 +1,11 @@
 on:
-  push:
-    
-env:
-  DATE: $(date +'%Y-%m-%d')
+  schedule:
+    - cron: '1/5 * * * 4'
+    - cron: '1/5 * 27 * *'
 
 jobs:
   job-name:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ env.DATE }}
-      - if: ${{ env.DATE == '2022-10-27' }}
-        run: echo 'Worked!'
+      - run: echo ${{ toJSON(github.event.schedule) }}
       
