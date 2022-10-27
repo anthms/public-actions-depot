@@ -1,11 +1,9 @@
 on:
-  schedule:
-    - cron: '1/5 * * * 4'
-    - cron: '1/5 * 27 * *'
+  workflow_dispatch:
 
 jobs:
   job-name:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ toJSON(github.event.schedule) }}
+      - run: set -o | grep posix
       
