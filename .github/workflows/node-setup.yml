@@ -5,5 +5,9 @@ jobs:
   job-name:
     runs-on: ubuntu-latest
     steps:
-      - run: set -o | grep posix
+      - run: |
+          case :$SHELLOPTS: in
+            *:posix:*) echo "POSIX mode enabled" ;;
+            *)         echo "POSIX mode not enabled" ;;
+          esac
       
