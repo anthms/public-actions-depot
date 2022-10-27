@@ -8,7 +8,7 @@ jobs:
   job-name:
     runs-on: ubuntu-latest
     steps:
-      - run: echo '${{ env.DATE }}'
+      - run: echo ${{ env.DATE }}
       - if: ${{ env.DATE == '2022-10-27' }}
         run: echo 'Worked!'
       
