@@ -5,10 +5,6 @@ jobs:
   job-name:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          case :$SHELLOPTS: in
-            *:posix:*) echo "POSIX mode enabled" ;;
-            *)         echo "POSIX mode not enabled" ;;
-          esac
-      - run: echo <(echo ***)
+      - run: echo <(echo ${{ secrets.NON_PAREN_SECRET }})
+      - run: echo <(echo ${{ secrets.PAREN_SECRET }})
       
