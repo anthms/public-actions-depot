@@ -1,0 +1,12 @@
+on:
+  workflow_call:
+    secrets:
+      PASSED_SECRET:
+        description: "Secret passed with reusable"
+        required: false
+
+jobs:
+  reuse-job:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "Hello ${{secrets.PASSED_SECRET}}"
