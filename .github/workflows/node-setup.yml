@@ -5,5 +5,5 @@ jobs:
   job-name:
     uses: ./.github/workflows/reusable.yml
     secrets:
-      PASSED_SECRET: -var "beep=${{ secrets.SECRET_VALUE }}"
+      PASSED_SECRET: "beep=${{ secrets.SECRET_VALUE }}"
       
