@@ -3,8 +3,7 @@ on:
 
 jobs:
   job-name:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo <(echo ${{ secrets.NON_PAREN_SECRET }})
-      - run: echo <(echo ${{ secrets.PAREN_SECRET }})
+    uses: ./.github/workflows/reusable.yml
+    secrets:
+      PASSED_SECRET: ${{ secrets.SECRET_VALUE }}
       
