@@ -6,9 +6,11 @@ on:
 jobs:
   job-name:
     runs-on: ubuntu-latest
+    outputs:
+      this-version: ${{ steps.out.outputs.version }}
     steps:
-      - run: |
+      - id: out
+        run: |
           VAR=9d2034d666b1
           echo "OUTPUT: $GITHUB_OUTPUT"
-          //echo "version=${VAR}" >> $GITHUB_OUTPUT
-          //echo "version=${VAR}" >> "$GITHUB_OUTPUT"
+          echo "version=${VAR}" >> $GITHUB_OUTPUT
