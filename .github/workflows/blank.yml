@@ -10,4 +10,5 @@ jobs:
       - id: out
         run: |
           VAR=$(echo 'value')
+          echo "OUTPUT: $GITHUB_OUTPUT"
           echo "vars=${VAR}" >> $GITHUB_OUTPUT
