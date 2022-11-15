@@ -6,16 +6,8 @@ on:
 jobs:
   job-name:
     runs-on: ubuntu-latest
-    container: alpine:latest
     steps:
-      - name: Init
-        run: /sbin/my_init &
-      - run: |
-          counter=1
-          until [ $counter -gt 50 ]
-          do
-            echo $counter
-            ((counter++))
-            sleep 1
-          done
-          echo All done
+      - id: out
+        run: |
+          VAR=$(echo 'value')
+          echo "vars=${VAR}" >> $GITHUB_OUTPUT
