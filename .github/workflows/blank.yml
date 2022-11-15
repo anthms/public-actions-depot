@@ -10,5 +10,5 @@ jobs:
       - run: |
           VAR=9d2034d666b1
           echo "OUTPUT: $GITHUB_OUTPUT"
-          echo "version=${VAR}" >> $GITHUB_OUTPUT
-          echo "version=${VAR}" >> "$GITHUB_OUTPUT"
+          //echo "version=${VAR}" >> $GITHUB_OUTPUT
+          //echo "version=${VAR}" >> "$GITHUB_OUTPUT"
