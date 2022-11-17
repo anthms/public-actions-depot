@@ -11,6 +11,7 @@ jobs:
     steps:
       - id: out
         run: |
-          VAR=$(echo 'this')
-          echo "OUTPUT: $GITHUB_OUTPUT"
-          echo "version=${VAR}" >> $GITHUB_OUTPUT
+          arr=(1 2 3)
+          version=${arr[2]}
+          echo "VERSION ${version}"
+          echo "outvar=${version}" >> $GITHUB_OUTPUT
