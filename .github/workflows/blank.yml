@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  job-name:
-    runs-on: ubuntu-latest
+  job-one:
+    runs-on: nothing
     outputs:
       this-version: ${{ steps.out.outputs.version }}
     steps:
@@ -15,3 +15,18 @@ jobs:
           version=${arr[2]}
           echo "VERSION ${version}"
           echo "outvar=${version}" >> $GITHUB_OUTPUT
+          
+  job-two:
+    runs-on: nothing
+    steps:
+      - run: echo "done"
+      
+  job-three:
+    runs-on: nothing
+    steps:
+      - run: echo "done"
+      
+  job-four:
+    runs-on: nothing
+    steps:
+      - run: echo "done"
