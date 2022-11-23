@@ -18,8 +18,8 @@ jobs:
           EOF
           )
           echo "$MY_STRING"
-          echo 'thisString="$MY_STRING"' >> $GITHUB_OUTPUT
+          echo "thisString=$MY_STRING" >> $GITHUB_OUTPUT
         id: my_string
       - name: display string
         run: |
-          echo "The string is: ${{ steps.my_string.outputs.content }}"
+          echo "The string is: ${{ steps.my_string.outputs.thisString }}"
