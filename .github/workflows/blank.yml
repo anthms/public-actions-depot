@@ -12,10 +12,11 @@ jobs:
       - name: create string
         run: |
           MY_STRING=$(cat << EOF
-          first line
-          second line
-          third line
+            first line
+            second line
+            third line
           EOF
+          )
           echo "$MY_STRING"
           echo 'thisString="$MY_STRING"' >> $GITHUB_OUTPUT
         id: my_string
