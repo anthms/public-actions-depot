@@ -16,7 +16,7 @@ jobs:
             second line
             third line
             EOF
-          )
+            )
           echo "$MY_STRING"
           echo 'thisString="$MY_STRING"' >> $GITHUB_OUTPUT
         id: my_string
