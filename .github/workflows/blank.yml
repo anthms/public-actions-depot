@@ -15,6 +15,9 @@ jobs:
           third line
           EOF
           )
+          MY_STRING="${MY_STRING//'%'/'%25'}"
+          MY_STRING="${MY_STRING//$'\n'/'%0A'}"
+          MY_STRING="${MY_STRING//$'\r'/'%0D'}"
           echo "$MY_STRING"
           echo "content=$MY_STRING" >> "$GITHUB_OUTPUT"
         id: my_string
