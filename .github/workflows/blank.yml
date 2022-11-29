@@ -1,26 +1,26 @@
 on:
-  #push:
-  #pull_request:
   workflow_dispatch:
+    inputs:
+      dry_run_number:
+        description: The number of the dry run to collect results for
+        type: string
+        required: true
+      dry_run_tag:
+        description: The tag to collect results for
+        type: string
+        required: true
+      allow_partial_results:
+        description: Allow partial results
+        type: boolean
+        required: false
+        default: false
+
+
+concurrency:
+  group: ${{ github.ref_name }}-${{ inputs.dry_run_number }}-${{ inputs.dry_run_tag }}-${{ inputs.allow_partial_results }}
 
 jobs:
   job-one:
     runs-on: ubuntu-latest
     steps:
-      - name: create string
-        run: |
-          MY_STRING=$(cat << EOF
-          first line
-          second line
-          third line
-          EOF
-          )
-          MY_STRING="${MY_STRING//'%'/'%25'}"
-          MY_STRING="${MY_STRING//$'\n'/'%0A'}"
-          MY_STRING="${MY_STRING//$'\r'/'%0D'}"
-          echo "$MY_STRING"
-          echo "content=$MY_STRING" >> $GITHUB_OUTPUT
-        id: my_string
-      - name: display string
-        run: |
-          echo "The string is: ${{ steps.my_string.outputs.content }}"
+      - run: echo 'done'
