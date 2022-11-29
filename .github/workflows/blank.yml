@@ -23,4 +23,9 @@ jobs:
   job-one:
     runs-on: ubuntu-latest
     steps:
-      - run: echo 'done'
+      - run: |
+          for value in {1..50}
+          do
+            echo "Print this --> $value"
+            sleep 5
+          done
