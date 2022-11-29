@@ -1,12 +1,11 @@
 on:
   workflow_call:
-    secrets:
-      PASSED_SECRET:
-        description: "Secret passed with reusable"
-        required: false
+  
+concurrency:
+  group: ${{ github.run_id }}
 
 jobs:
   reuse-job:
     runs-on: ubuntu-latest
     steps:
-    - run: echo "Hello ${{secrets.PASSED_SECRET}}"
+    - run: echo "done"
