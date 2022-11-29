@@ -17,7 +17,8 @@ on:
 
 
 concurrency:
-  group: ${{ github.ref_name }}-${{ inputs.dry_run_number }}-${{ inputs.dry_run_tag }}-${{ inputs.allow_partial_results }}
+  group: ${{ github.run_id }}
+# group: ${{ github.ref_name }}-${{ inputs.dry_run_number }}-${{ inputs.dry_run_tag }}-${{ inputs.allow_partial_results }}
 
 jobs:
   job-one:
