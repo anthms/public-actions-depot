@@ -1,28 +1,8 @@
 on:
   workflow_dispatch:
 
-concurrency:
-  group: ${{ github.run_id }}
-# group: ${{ github.ref_name }}-${{ inputs.dry_run_number }}-${{ inputs.dry_run_tag }}-${{ inputs.allow_partial_results }}
-
 jobs:
-  job-three:
-    uses: ./.github/workflows/reusable.yml
   job-one:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          for value in {1..50}
-          do
-            echo "Print this --> $value"
-            sleep 5
-          done
-  job-two:
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          for value in {1..50}
-          do
-            echo "Print this --> $value"
-            sleep 5
-          done
+      - run: echo "Conviértete en una caricatura 😱"
