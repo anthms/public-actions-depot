@@ -21,5 +21,5 @@ jobs:
           -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
           -H "X-GitHub-Api-Version: 2022-11-28" \
           https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs |
-          jq '.jobs[] | select(.name == ${{ github.job }}) | .id'
+          jq '.jobs[] | select(.name == "${{ github.job }}") | .id'
           
