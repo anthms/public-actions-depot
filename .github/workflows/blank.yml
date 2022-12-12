@@ -2,24 +2,21 @@ on:
   workflow_dispatch:
 
 jobs:
-  job-one:
+  test:
     runs-on: ubuntu-latest
+    timeout-minutes: 3
     steps:
-      - name: Generate list using Markdown
+      - if: "!cancelled()"
         run: |
-          echo "This is the lead in sentence for the list" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
-          echo "- Lets add a bullet point" >> $GITHUB_STEP_SUMMARY
-          echo "- Lets add a second bullet point" >> $GITHUB_STEP_SUMMARY
-          echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
+          for sig in INT TERM EXIT SIGHUP SIGINT SIGQUIT SIGABRT SIGALRM SIGTERM; do
+              trap 'echo "Caught signal '$sig'..."' $sig
+          done
           
-      - run: echo '${{ toJSON(github) }}'
-      - run: echo '${{ github.job }}'
-      - run: |
-          curl \
-          -H "Accept: application/vnd.github+json" \
-          -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-          -H "X-GitHub-Api-Version: 2022-11-28" \
-          https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs |
-          jq '.jobs[] | select(.name == "${{ github.job }}") | .id'
+          while true
+          do
+            echo Testing
+            sleep 1
+          done
+      - if: cancelled()
+        run: echo cancelled
           
