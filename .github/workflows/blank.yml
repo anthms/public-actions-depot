@@ -13,7 +13,7 @@ jobs:
           echo "- Lets add a second bullet point" >> $GITHUB_STEP_SUMMARY
           echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
           
-      - run: echo '${{ toJSON(job) }}'
+      - run: echo '${{ toJSON(github) }}'
       - run: echo '${{ github.job }}'
       - run: |
           curl \
