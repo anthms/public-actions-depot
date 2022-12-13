@@ -8,6 +8,6 @@ function teardown {
 
 trap teardown SIGINT
 
+ps
 echo Sleeping...
-sleep 60 & pid=$1
-wait $pid
+sleep 60 & wait $!
