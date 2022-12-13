@@ -1,25 +1,25 @@
-on:
-  workflow_dispatch:
+name: Test
+
+on: push
 
 jobs:
-  test:
-    concurrency:
-      group: "test"
-      cancel-in-progress: true
+  inline:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
     steps:
-      - if: "!cancelled()"
-        run: |
-          for sig in INT TERM EXIT SIGHUP SIGINT SIGQUIT SIGABRT SIGALRM SIGTERM; do
-              trap 'echo "Caught signal '$sig'..."' $sig
-          done
-          
-          while true
-          do
-            echo Testing
-            sleep 1
-          done
-      - if: cancelled()
-        run: echo cancelled
+      - run: |
+          function teardown {
+            status=$?
+            echo "Teardown status ${status}"
+            exit "${status}"
+          }
+
+          trap teardown SIGINT
+
+          echo Sleeping...
+          sleep 60 & wait $!
+  external-script:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: .github/workflows/test.sh # This is the same script as the one inlined above
           
