@@ -6,7 +6,9 @@ function teardown {
   exit "${status}"
 }
 
-trap teardown SIGINT
+for sig in INT TERM EXIT SIGHUP SIGINT SIGQUIT SIGABRT SIGALRM SIGTERM; do
+    trap teardown $sig
+done
 
 echo Sleeping...
-sleep 5 & wait $!
+sleep 60 & wait $!
