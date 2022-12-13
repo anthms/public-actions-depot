@@ -16,6 +16,7 @@ jobs:
 
           trap teardown SIGINT
 
+          ps
           echo Sleeping...
           sleep 60 & wait $!
   external-script:
