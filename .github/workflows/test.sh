@@ -6,11 +6,10 @@ function teardown {
   exit "${status}"
 }
 
-trap 'echo signal received!; kill "${child_pid}"; wait "${child_pid}"; teardown' SIGINT
+trap 'echo signal received!; kill $(jobs -p); wait; teardown' SIGINT SIGTERM
 
 echo "The script pid is $BASHPID"
-sleep 60 &
+sleep 30 &
+sleep 40 &
 
-child_pid="$!"
-echo "${child_pid}"
-wait "${child_pid}"
+wait
