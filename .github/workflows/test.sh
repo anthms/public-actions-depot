@@ -8,6 +8,8 @@ function teardown {
 
 trap teardown SIGINT
 
-ps
-echo Sleeping...
-sleep 60 & wait $!
+echo "The script pid is $"
+sleep 60 &
+
+child_pid="$!"
+wait "${child_pid}"
