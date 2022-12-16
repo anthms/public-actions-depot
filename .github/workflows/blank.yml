@@ -18,9 +18,12 @@ jobs:
           ps
           echo Sleeping...
           sleep 60 & wait $!
+          
   external-script:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: bash .github/workflows/test.sh # This is the same script as the one inlined above
+      - run: |
+          echo "The script pid is $"
+          bash .github/workflows/test.sh
           
