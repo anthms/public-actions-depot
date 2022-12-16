@@ -15,7 +15,6 @@ jobs:
 
           trap teardown SIGINT
 
-          ps
           echo Sleeping...
           sleep 60 & wait $!
           
@@ -24,6 +23,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
-          echo "The script pid is " $
+          echo "The script pid is $BASHPID"
           bash .github/workflows/test.sh
           
