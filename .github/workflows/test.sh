@@ -8,7 +8,7 @@ function teardown {
 
 trap teardown SIGINT
 
-echo "The script pid is $"
+echo "The script pid is $BASHPID"
 sleep 60 &
 
 child_pid="$!"
