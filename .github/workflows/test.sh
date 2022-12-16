@@ -12,4 +12,5 @@ echo "The script pid is $BASHPID"
 sleep 60 &
 
 child_pid="$!"
+echo "${child_pid}"
 wait "${child_pid}"
