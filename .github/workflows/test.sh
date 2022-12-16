@@ -6,7 +6,7 @@ function teardown {
   exit "${status}"
 }
 
-trap teardown SIGINT
+trap 'echo signal received!; kill "${child_pid}"; wait "${child_pid}"; teardown' SIGINT
 
 echo "The script pid is $BASHPID"
 sleep 60 &
