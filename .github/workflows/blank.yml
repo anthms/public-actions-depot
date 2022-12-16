@@ -24,6 +24,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
-          echo "The script pid is $"
+          echo "The script pid is " $
           bash .github/workflows/test.sh
           
