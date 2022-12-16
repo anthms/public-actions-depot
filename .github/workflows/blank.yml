@@ -22,7 +22,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: |
-          echo "The script pid is $BASHPID"
-          bash .github/workflows/test.sh
+      - uses: ./.github/workflows/test.sh
           
