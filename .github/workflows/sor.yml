@@ -10,35 +10,46 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Old method
-        id: old_method
-        run: echo "::set-output name=option::THIS_ACTUALLY_WORKS"
-
-      - name: New method
-        id: new_method
-        run: echo "option=THIS_NO_LONGER_WORKS" >> $GITHUB_OUTPUT
-
       - name: With bash
+        id: bash
         shell: bash
         run: |
-          echo "Old method: ${{ steps.old_method.outputs.option }}"
-          echo "New method: ${{ steps.new_method.outputs.option }}"
+          echo "::set-output name=option-one::THIS_ACTUALLY_WORKS"
+          echo "option-two=THIS_NO_LONGER_WORKS" >> $GITHUB_OUTPUT
           
       - name: With pwsh
+        id: pwsh
         shell: pwsh
         run: |
-          echo "Old method: ${{ steps.old_method.outputs.option }}"
-          echo "New method: ${{ steps.new_method.outputs.option }}"
+          echo "::set-output name=option-one::THIS_ACTUALLY_WORKS"
+          echo "option-two=THIS_NO_LONGER_WORKS" >> $GITHUB_OUTPUT
           
       - name: With PowerShell
+        id: powershell
         shell: powershell
         run: |
-          echo "Old method: ${{ steps.old_method.outputs.option }}"
-          echo "New method: ${{ steps.new_method.outputs.option }}"
+          echo "::set-output name=option-one::THIS_ACTUALLY_WORKS"
+          echo "option-two=THIS_NO_LONGER_WORKS" >> $GITHUB_OUTPUT
           
       - name: With cmd
+        id: cmd
         shell: cmd
         run: |
-          echo "Old method: ${{ steps.old_method.outputs.option }}"
-          echo "New method: ${{ steps.new_method.outputs.option }}"
+          echo "::set-output name=option-one::THIS_ACTUALLY_WORKS"
+          echo "option-two=THIS_NO_LONGER_WORKS" >> $GITHUB_OUTPUT
+          
+      - name: Display Vars
+        run: |
+          echo "BASH"
+          echo "Old method: ${{ steps.bash.outputs.option-one }}"
+          echo "New method: ${{ steps.bash.outputs.option-two }}"
+          echo "PWSH"
+          echo "Old method: ${{ steps.pwsh.outputs.option-one }}"
+          echo "New method: ${{ steps.pwsh.outputs.option-two }}"
+          echo "POWERSHELL"
+          echo "Old method: ${{ steps.powershell.outputs.option-one }}"
+          echo "New method: ${{ steps.powershell.outputs.option-two }}"
+          echo "CMD"
+          echo "Old method: ${{ steps.cmd.outputs.option-one }}"
+          echo "New method: ${{ steps.cmd.outputs.option-two }}"
           
