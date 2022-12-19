@@ -15,7 +15,9 @@ jobs:
 
           trap teardown SIGINT
 
+          ps
           echo "The script pid is $BASHPID"
+          echo "value - $!"
           sleep 60 & wait $!
           
   external-script:
