@@ -6,11 +6,7 @@ function teardown {
   exit "${status}"
 }
 
-trap 'echo "signal received!"; teardown' SIGINT
-
-ps
-echo "The script pid is $BASHPID"
-echo "dollar sign exclamation: $!"
+echo "Starting sleep ..."
 sleep 60
 
 wait $!
