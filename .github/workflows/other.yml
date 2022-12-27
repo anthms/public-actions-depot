@@ -7,6 +7,6 @@ jobs:
   job-name:
     runs-on: ubuntu-latest
     steps:
-      - uses: docker://foo/bar@sha256:asdasdads
+      - uses: docker://alpine@latest
         with:
           args: sh -c '/a/b/c command > output.log'
