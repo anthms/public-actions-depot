@@ -6,7 +6,8 @@ jobs:
   inline:
     runs-on: windows-latest
     steps:
-      - run: |
+      - shell: bash
+        run: |
           function teardown {
             status=$?
             echo "Teardown status ${status}"
