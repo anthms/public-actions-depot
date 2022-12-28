@@ -7,8 +7,13 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: |
-          for sig in SIGINT SIGTERM; do
-              trap 'echo "Caught signal '$sig'..."' $sig
-          done
-          echo "You have 60s to cancel this run!"
+          function teardown {
+            status=$?
+            echo "Teardown status ${status}"
+            exit "${status}"
+          }
+
+          trap teardown SIGINT
+
+          echo Sleeping...
           sleep 60
