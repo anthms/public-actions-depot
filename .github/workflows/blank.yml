@@ -21,10 +21,11 @@ jobs:
           sleep 60 & wait $!
           
   external-script:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
       - run: |
           trap 'echo "signal received!"; teardown' SIGINT
           bash ./.github/workflows/test.sh
+        shell: bash
           
