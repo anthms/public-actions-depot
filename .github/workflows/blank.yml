@@ -4,27 +4,11 @@ on: workflow_dispatch
 
 jobs:
   inline:
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          function teardown {
-            status=$?
-            echo "Teardown status ${status}"
-            exit "${status}"
-          }
-
-          trap teardown SIGINT
-
-          ps
-          echo "The script pid is $BASHPID"
-          echo "value - $!"
-          sleep 60 & wait $!
-          
-  external-script:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
-      - shell: bash
-        run: |
-          trap 'echo "signal received!"; teardown' SIGINT
-          bash ./.github/workflows/test.sh
+      - run: |
+          for sig in SIGINT SIGTERM; do
+              trap 'echo "Caught signal '$sig'..."' $sig
+          done
+          echo "You have 60s to cancel this run!"
+          sleep 60
