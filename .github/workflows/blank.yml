@@ -24,8 +24,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - run: |
+      - shell: bash
+        run: |
           trap 'echo "signal received!"; teardown' SIGINT
           bash ./.github/workflows/test.sh
-        shell: bash
-          
