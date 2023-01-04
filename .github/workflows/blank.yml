@@ -3,12 +3,9 @@ name: Test
 on: workflow_dispatch
 
 jobs:
-  inline:
-    runs-on: windows-latest
+  job-one:
+    runs-on: ubuntu-latest
+    container: ubuntu:20.04
     steps:
-      - shell: bash
-        run: curl https://github.com/anthms/maven-publish/archive/refs/tags/1.0.0.zip
-      - shell: bash
-        run: curl https://github.com/anthms/maven-publish/archive/refs/tags/1.0.0.zip
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v2
+      - run: ls -a
