@@ -7,8 +7,7 @@ jobs:
   job-name:
     runs-on: ubuntu-latest
     steps:
-      - if: false
-        id: id-name
+      - id: id-name
         name: ID NAME
         uses: docker://alpine:latest
         env:
