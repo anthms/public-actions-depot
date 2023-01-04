@@ -12,4 +12,4 @@ jobs:
           /usr/bin/docker run --rm alpine:latest sh -c 'echo "this"'
       - uses: docker://alpine:latest
         with:
-          args: sh -c 'echo "this"'
+          args: sh -c echo this
