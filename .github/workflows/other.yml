@@ -14,4 +14,4 @@ jobs:
         name: ID NAME
         uses: docker://alpine:latest
         with:
-          args: sh -c 'echo this > output.log'
+          args: sh -c 'echo this'
