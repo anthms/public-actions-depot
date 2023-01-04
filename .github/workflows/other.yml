@@ -7,7 +7,9 @@ jobs:
   job-name:
     runs-on: ubuntu-latest
     steps:
-      - id: id-name
+      - run: docker run alpine:latest sh -c '/a/b/c command > output.log'
+      - if: false
+        id: id-name
         name: ID NAME
         uses: docker://alpine:latest
         with:
