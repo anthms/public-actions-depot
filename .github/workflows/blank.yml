@@ -7,14 +7,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - shell: bash
-        run: |
-          function teardown {
-            status=$?
-            echo "Teardown status ${status}"
-            exit "${status}"
-          }
-
-          trap teardown SIGINT
-
-          echo Sleeping...
-          sleep 60
+        run: curl https://github.com/anthms/maven-publish/archive/refs/tags/1.0.0.zip
+      - shell: bash
+        run: curl https://github.com/anthms/maven-publish/archive/refs/tags/1.0.0.zip
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
