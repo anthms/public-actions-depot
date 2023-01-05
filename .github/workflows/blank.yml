@@ -9,5 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
+          cd ${{ github.workspace }}
           touch file.txt
           git status
