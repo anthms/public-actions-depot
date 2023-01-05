@@ -7,8 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     container: ubuntu:20.04
     steps:
-      - uses: actions/checkout@v3
-      - run: |
-          cd ${{ github.workspace }}
-          touch file.txt
-          git status
+      - uses: actions/checkout@v2
