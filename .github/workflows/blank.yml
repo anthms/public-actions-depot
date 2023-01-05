@@ -8,6 +8,6 @@ jobs:
     container: ubuntu:20.04
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - run: ls -a
+      - run: |
+          touch file.txt
+          git status
