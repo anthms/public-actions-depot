@@ -7,4 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     container: ubuntu:20.04
     steps:
+      - run: |
+          git --version
+          sudo apt-get update
+          sudo apt-get install git -y
+          git --version
       - uses: actions/checkout@v2
