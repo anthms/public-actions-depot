@@ -3,14 +3,13 @@ name: Test
 on: workflow_dispatch
 
 jobs:
-  runner-one:
+  runner-matrix:
+    strategy:
+      matrix:
+        runs: [0, 1]
     runs-on: ubuntu-latest
     steps:
       - name: Test Request
-        run: curl -i https://api.github.com/users/octocat
-        
-  runner-two:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Test Request
-        run: curl -i https://api.github.com/users/octocat
+        run: |
+          hostname -I
+          curl -i https://api.github.com/users/octocat
