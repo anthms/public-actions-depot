@@ -9,8 +9,13 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Test Request
-        shell: bash
+      - name: Test Request Linux
+        if: ${{ runner.os }} == "Linux"
         run: |
           hostname -I
+          curl -i https://api.github.com/users/octocat
+      - name: Test Request Windows
+        if: ${{ runner.os }} == "Windows"
+        run: |
+          Get-NetIPAddress -AddressFamily IPV4
           curl -i https://api.github.com/users/octocat
