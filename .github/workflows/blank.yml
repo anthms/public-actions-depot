@@ -4,18 +4,17 @@ on: workflow_dispatch
 
 jobs:
   runner-matrix:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       - name: Test Request Linux
-        if: ${{ runner.os }} == 'Linux'
         run: |
           hostname -I
           curl -i https://api.github.com/users/octocat
+          
+  runner-windows:
+    runs-on: windows-latest
+    steps:
       - name: Test Request Windows
-        if: ${{ runner.os }} == 'Windows'
         run: |
           Get-NetIPAddress -AddressFamily IPV4
           curl -i https://api.github.com/users/octocat
