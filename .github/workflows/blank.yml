@@ -12,8 +12,4 @@ jobs:
       - name: Test Request
         run: |
           hostname -I
-          limit = $( curl -i https://api.github.com/users/octocat | jq .message )
-          
-          if [ ! -z "$limit" ]
-            exit 1
-          fi
+          curl -i https://api.github.com/users/octocat
