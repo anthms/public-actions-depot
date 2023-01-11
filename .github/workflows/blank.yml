@@ -19,5 +19,5 @@ jobs:
     steps:
       - name: Test Request Windows
         run: |
-          Get-NetIPAddress -AddressFamily IPV4
+          Get-NetIPAddress
           curl -i https://api.github.com/users/octocat
