@@ -1,0 +1,13 @@
+on:
+  schedule:
+    - cron: 5 * * * * 
+
+jobs:
+  job-name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get date of this Wednesday
+        id: date
+        run: echo "date=Weekly 1:1 $(date --date="this wed" "+%A %h %d, %Y")" >> $GITHUB_OUTPUT
+        
+      - run: echo ${{ steps.date.outputs.date }}
