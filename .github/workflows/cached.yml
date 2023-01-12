@@ -23,8 +23,8 @@ jobs:
         
       - if: steps.cache-this.outputs.cache-hit != 'true'
         run: |
-          mkdir mydir
-          echo "Here is my file" > ./mydir/file.txt
+          mkdir $HOME/mydir
+          echo "Here is my file" > ./$HOME/mydir/file.txt
       
   use-cache:
     needs: check-cache
@@ -38,7 +38,7 @@ jobs:
           key: "new-dir" #${{ runner.os }}-mykeynew
       - run: |
           ls .
-          cat mydir/file.txt
+          cat $HOME/mydir/file.txt
 
   use-cache-two:
     if: false
