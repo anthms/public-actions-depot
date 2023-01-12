@@ -24,7 +24,7 @@ jobs:
       - if: steps.cache-this.outputs.cache-hit != 'true'
         run: |
           mkdir $HOME/mydir
-          echo "Here is my file" > ./$HOME/mydir/file.txt
+          echo "Here is my file" > $HOME/mydir/file.txt
       
   use-cache:
     needs: check-cache
