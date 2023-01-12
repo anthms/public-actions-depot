@@ -18,7 +18,7 @@ jobs:
       - id: cache-this
         uses: actions/cache@v3
         with:
-          path: $HOME/mydir
+          path: home/runner/mydir
           key: "new-dir" #${{ runner.os }}-mykeynew
         
       - if: steps.cache-this.outputs.cache-hit != 'true'
@@ -34,7 +34,7 @@ jobs:
     steps:
       - uses: actions/cache@v3
         with:
-          path: $HOME/mydir
+          path: home/runner/mydir
           key: "new-dir" #${{ runner.os }}-mykeynew
       - run: |
           ls .
