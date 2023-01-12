@@ -7,9 +7,6 @@ jobs:
   job-name:
     runs-on: ubuntu-latest
     steps:
-      - shell: sh
-        run: |
-          /usr/bin/docker run --rm alpine:latest sh -c 'echo "this"'
-      - uses: docker://alpine:latest
-        with:
-          args: sh -c "echo this"
+      - run: |
+          echo $HOME
+          echo ${{ github.workspace }}
