@@ -2,22 +2,7 @@ name: Test
 
 on: workflow_dispatch
 
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  runner-matrix:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Test Request Linux
-        run: |
-          hostname -I
-          curl -i https://api.github.com/users/octocat
-          
-  runner-windows:
-    runs-on: windows-latest
-    steps:
-      - name: Test Request Windows
-        run: |
-          Get-NetIPAddress
-          curl -i https://api.github.com/users/octocat
+  job-one:
+    uses: .github/workflows/reusable-callable.yml
