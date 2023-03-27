@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v3
       - id: step1
         run: |
-          CONT=$(cat data.json)
+          CONT=$("cat data.json")
           echo "test=$CONT" >> "$GITHUB_OUTPUT"
   job2:
     runs-on: ubuntu-latest
