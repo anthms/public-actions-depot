@@ -15,4 +15,4 @@ jobs:
     needs: job1
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ fromJSON(needs.job1.outputs.matrix).include }}"
+      - run: echo "${{ fromJSON(needs.job1.outputs.matrix).include.project }}"
