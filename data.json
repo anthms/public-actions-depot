@@ -1,19 +1,19 @@
 "repository": {
       "packages": {
-        "nodes": [
-          {
-            "id": "MMMMMDDDDDLLLLLLFFFFFF",
-            "name": "test",
-            "packageType": "NPM",
-            "versions": {
-              "nodes": [
-                {
-                  "id": "MMMMFFFFFGGGGGGOOOOO===",
-                  "version": "1.0.0"
-                }
-              ]
-            }
-          }
-        ]
+            "nodes": [
+                  {
+                        "id": "MMMMMDDDDDLLLLLLFFFFFF",
+                        "name": "test",
+                        "packageType": "NPM",
+                        "versions": {
+                              "nodes": [
+                                    {
+                                          "id": "MMMMFFFFFGGGGGGOOOOO===",
+                                          "version": "1.0.0"
+                                    }
+                              ]
+                        }
+                  }
+            ]
       }
-    }
+}
