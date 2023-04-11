@@ -1,0 +1,9 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  job-name:
+    uses: ./.github/workflows/reusable.yml
+    secrets:
+      PASSED_SECRET: "beep=${{ secrets.SECRET_VALUE }}"
+      

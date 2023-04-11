@@ -9,36 +9,40 @@ jobs:
   check-cache:
     runs-on: ubuntu-latest
     steps:
-#      - uses: actions/checkout@v3
-#        with:
-#          ref: ${{ github.event.pull_request.head.ref }}
+      - uses: actions/checkout@v3
+        #with:
+        #  ref: ${{ github.event.pull_request.head.ref }}
       
-#      - run: echo "${{ fromJSON(github.event.pull_request) }}"
+      # - run: echo "${{ fromJSON(github.event.pull_request) }}"
     
       - id: cache-this
         uses: actions/cache@v3
         with:
-          path: mydir
-          key: ${{ runner.os }}-mykeynew
+          path: ~/mydir
+          key: "new-dir" #${{ runner.os }}-mykeynew
         
       - if: steps.cache-this.outputs.cache-hit != 'true'
         run: |
-          mkdir mydir
-          echo "Here is my file" > ./mydir/file.txt
+          mkdir $HOME/mydir
+          echo "Here is my file" > $HOME/mydir/file.txt
+          echo $HOME/mydir/file.txt
       
   use-cache:
     needs: check-cache
     runs-on: ubuntu-latest
+    environment:
+      name: Test-Env
     steps:
       - uses: actions/cache@v3
         with:
-          path: mydir
-          key: ${{ runner.os }}-mykeynew
+          path: ~/mydir
+          key: "new-dir" #${{ runner.os }}-mykeynew
       - run: |
           ls .
-          cat mydir/file.txt
+          cat $HOME/mydir/file.txt
 
   use-cache-two:
+    if: false
     needs: check-cache
     runs-on: ubuntu-latest
     steps:

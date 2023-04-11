@@ -1,0 +1,25 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  wf-command:
+    runs-on: ubuntu-latest
+    outputs:
+      value: ${{ steps.step.outputs.value }}
+    steps:
+      - id: step
+        run: |
+          echo "::set-output name=value::400"
+      - run: echo ${{ steps.step.outputs.value }}
+      
+    
+  wf-files:
+    runs-on: ubuntu-latest
+    outputs:
+      value: ${{ steps.step.outputs.value }}
+    steps:
+      - id: step
+        run: |
+          echo "value=400" >> $GITHUB_OUTPUT
+      - run: echo ${{ steps.step.outputs.value }}
+    

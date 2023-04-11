@@ -1,0 +1,27 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  daily_standup:
+    name: Weekly One-on-One
+    runs-on: ubuntu-latest
+    steps:
+
+    # Repo code checkout required if `template` is used
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Get date of this Wednesday
+      id: date
+      run: echo ::set-output name=date::Weekly 1:1 $(date --date="this wed" "+%A %h %d, %Y")
+      
+    - name: issue-bot
+      uses: imjohnbo/issue-bot@v2
+      with:
+        title: ${{ steps.date.outputs.date }}
+        assignees: "anthms" # GitHub handles without the @
+        labels: "one-on-one"
+        pinned: false
+        close-previous: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
