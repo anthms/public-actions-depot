@@ -7,6 +7,4 @@ jobs:
   job-name:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo $HOME
-          echo ${{ github.workspace }}
+      - uses: actions/checkout@v3
