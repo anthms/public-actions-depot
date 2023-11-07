@@ -1,8 +1,5 @@
 on:
   workflow_call:
-  
-concurrency:
-  group: ${{ github.run_id }}
 
 jobs:
   reuse-job:
