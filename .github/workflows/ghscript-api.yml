@@ -8,12 +8,37 @@ jobs:
       - uses: actions/github-script@v7
         with:
           script: |
+            const headBranch = 'anthms:test1'
+            const headBranchFull = 'anthms/public-actions-depot:test1'
+            
+            try {
+              core.info(`Attempting creation of pull request`)
+              const {data: pull} = await github.rest.pulls.create({
+                repo: 'public-actions-depot',
+                owner: '${{ github.repository_owner }}',
+                title: 'Created title',
+                head: headBranch,
+                head_repo: 'anthms/public-actions-depot',
+                base: 'anthms:test1',
+                body: 'Created body'
+              })
+              core.info(
+                `Created pull request #${pull.number} (${headBranch} => anthms:test1`
+              )
+              return {
+                number: pull.number,
+                html_url: pull.html_url,
+                created: true
+              }
+            } catch (e) {
+                core.info(e.message)
+            }
             core.info(`Fetching existing pull request`)
             const {data: pulls} = await github.rest.pulls.list({
               repo: 'public-actions-depot',
               owner: '${{ github.repository_owner }}',
               state: 'open',
-              head: 'test1',
+              head: headBranchFull,
               base: 'main2'
             })
             core.info(`Attempting update of pull request`)
