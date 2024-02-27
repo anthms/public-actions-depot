@@ -11,7 +11,7 @@ jobs:
             core.info(`Fetching existing pull request`)
             const {data: pulls} = await github.rest.pulls.list({
               repo: 'public-actions-depot',
-              owner: ${{ github.repository_owner }},
+              owner: '${{ github.repository_owner }}',
               state: 'open',
               head: test1,
               base: main2
@@ -19,7 +19,7 @@ jobs:
             core.info(`Attempting update of pull request`)
             const {data: pull} = await github.rest.pulls.update({
               repo: 'public-actions-depot',
-              owner: ${{ github.repository_owner }},
+              owner: '${{ github.repository_owner }}',
               pull_number: pulls[0].number,
               title: 'Updated title',
               body: 'Updated body'
