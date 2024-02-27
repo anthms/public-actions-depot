@@ -38,7 +38,7 @@ jobs:
               repo: 'public-actions-depot',
               owner: '${{ github.repository_owner }}',
               state: 'open',
-              head: headBranchFull,
+              head: headBranch,
               base: 'main2'
             })
             core.info(`Attempting update of pull request`)
