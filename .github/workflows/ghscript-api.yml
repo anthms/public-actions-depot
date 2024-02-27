@@ -1,0 +1,34 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  job-name:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            core.info(`Fetching existing pull request`)
+            const {data: pulls} = await this.octokit.rest.pulls.list({
+              repo: 'public-actions-depot',
+              owner: ${{ github.repository_owner }},
+              state: 'open',
+              head: test1,
+              base: main2
+            })
+            core.info(`Attempting update of pull request`)
+            const {data: pull} = await this.octokit.rest.pulls.update({
+              repo: 'public-actions-depot',
+              owner: ${{ github.repository_owner }},
+              pull_number: pulls[0].number,
+              title: 'Updated title',
+              body: 'Updated body'
+            })
+            core.info(
+              `Updated pull request #${pull.number}`
+            )
+            return {
+              number: pull.number,
+              html_url: pull.html_url,
+              created: false
+            }
