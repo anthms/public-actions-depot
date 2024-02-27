@@ -9,7 +9,7 @@ jobs:
         with:
           script: |
             core.info(`Fetching existing pull request`)
-            const {data: pulls} = await this.octokit.rest.pulls.list({
+            const {data: pulls} = await octokit.rest.pulls.list({
               repo: 'public-actions-depot',
               owner: ${{ github.repository_owner }},
               state: 'open',
@@ -17,7 +17,7 @@ jobs:
               base: main2
             })
             core.info(`Attempting update of pull request`)
-            const {data: pull} = await this.octokit.rest.pulls.update({
+            const {data: pull} = await octokit.rest.pulls.update({
               repo: 'public-actions-depot',
               owner: ${{ github.repository_owner }},
               pull_number: pulls[0].number,
