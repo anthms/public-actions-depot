@@ -1,13 +1,14 @@
 on:
-  #push:
-  #pull_request:
   workflow_dispatch:
 
 jobs:
   job-name:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
-      - run: ssh-add -h
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - run: docker pull ghcr.io/anthms/something:latest
