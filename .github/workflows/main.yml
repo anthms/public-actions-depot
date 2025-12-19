@@ -4,12 +4,7 @@ on:
 jobs:
   job-name:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
     steps:
-      - run: exit 1
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 16
-          registry-url: https://npm.pkg.github.com
-      - run: npm install @anthms/npm-package-example@2.0.0
-        env:
-          NODE_AUTH_TOKEN: ${{ github.token }}
+      - uses: actions/checkout@v5
